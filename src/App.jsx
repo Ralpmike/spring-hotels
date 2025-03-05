@@ -14,7 +14,8 @@ function App() {
     <>
       <GlobalStyles />
       <StyledApp>
-        <Heading>Spring Hotels</Heading>
+        <Heading as="h1">Spring Hotels</Heading>
+        <Heading as="h2">The Oasis Hotels</Heading>
         <Button
           onClick={() => {
             console.log("Jesus is the best");
@@ -22,6 +23,7 @@ function App() {
         >
           Submit
         </Button>
+        <Heading as="h3">Forms</Heading>
         <Input />
         <Button onClick={() => alert("Cancel")}>Cancel</Button>
       </StyledApp>
