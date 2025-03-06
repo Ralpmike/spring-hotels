@@ -25,10 +25,8 @@ const Heading = styled.h1`
     css`
       font-size: 2rem;
       font-weight: 500;
-    `}
-
-  padding: 20px;
-  margin-block: 12px;
+    `} /* padding: 20px; */
+  /* margin-block: 12px; */
 `;
 
 export default Heading;

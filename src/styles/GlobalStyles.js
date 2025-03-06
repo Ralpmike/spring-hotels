@@ -1,6 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  
+    /* Creating animations for dark mode */
+    transition: background-color 0.3s, border 0.3s;
+  }
 :root {
   /* Indigo */
   --color-brand-50: #eef2ff;
@@ -56,16 +66,6 @@ const GlobalStyles = createGlobalStyle`
   --image-opacity: 100%;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-
-  /* Creating animations for dark mode */
-  transition: background-color 0.3s, border 0.3s;
-}
 
 html {
   font-size: 62.5%;
