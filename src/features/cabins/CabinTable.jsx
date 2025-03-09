@@ -40,7 +40,7 @@ function CabinTable() {
 
   if (isLoading) return <Spinner />;
 
-  // if (error) return <div>{error.message}</div>;
+  if (error) throw new Error(error);
 
   return (
     <Table role="table">
