@@ -118,10 +118,12 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         />
       </FormRow>
 
-      <FormRow label={"Description"} error={errors?.description?.message}>
+      <FormRow
+        label={"Description for website"}
+        error={errors?.description?.message}
+      >
         <Textarea
           type="number"
-          disabled={isWorking}
           id="description"
           defaultValue=""
           {...register("description", { required: "This field is required" })}
