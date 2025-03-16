@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
+// import CustomCursor from "./ui/customCursor";
 
 function App() {
   const queryClient = new QueryClient({
@@ -26,6 +27,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
       <GlobalStyles />
+      {/* <CustomCursor /> */}
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
