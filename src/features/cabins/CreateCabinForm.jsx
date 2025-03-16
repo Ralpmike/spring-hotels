@@ -6,13 +6,14 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 import { useCreateCabin } from "./useCreateCabin";
+import useEditCabin from "./useEditCabin";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditingSession = Boolean(editId);
 
   const { isCreating, createCabin } = useCreateCabin();
-  const { isEditing, EditCabin } = useCreateCabin();
+  const { isEditing, EditCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
   const {
     register,
