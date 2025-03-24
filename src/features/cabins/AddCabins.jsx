@@ -8,7 +8,7 @@ import CabinTable from './CabinTable';
 function AddCabins() {
 
   return (
-    <>
+    <div>
       <Modal>
         <Modal.Open opens="cabin-form">
           <Button>Add new cabin</Button>
@@ -19,15 +19,15 @@ function AddCabins() {
       </Modal>
 
 
-      <Modal>
+      {/* <Modal>
         <Modal.Open opens="table">
           <Button>Show Table</Button>
         </Modal.Open>
         <Modal.Window name="table">
           <CabinTable />
         </Modal.Window>
-      </Modal>
-    </>
+      </Modal> */}
+    </div>
   )
 }
 
