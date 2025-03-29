@@ -1,12 +1,10 @@
 // import React, { useState } from 'react'
-import CreateCabinForm from './CreateCabinForm';
-import Button from '../../ui/Button';
-import Modal from '../../ui/Modal';
-import CabinTable from './CabinTable';
-
+import CreateCabinForm from "./CreateCabinForm";
+import Button from "../../ui/Button";
+import Modal from "../../ui/Modal";
+import CabinTable from "./CabinTable";
 
 function AddCabins() {
-
   return (
     <div>
       <Modal>
@@ -17,18 +15,8 @@ function AddCabins() {
           <CreateCabinForm />
         </Modal.Window>
       </Modal>
-
-
-      {/* <Modal>
-        <Modal.Open opens="table">
-          <Button>Show Table</Button>
-        </Modal.Open>
-        <Modal.Window name="table">
-          <CabinTable />
-        </Modal.Window>
-      </Modal> */}
     </div>
-  )
+  );
 }
 
 // function AddCabins() {
@@ -46,4 +34,4 @@ function AddCabins() {
 //   )
 // }
 
-export default AddCabins
+export default AddCabins;
