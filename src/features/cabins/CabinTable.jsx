@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import useCabins from "./useCabins";
@@ -6,38 +5,47 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router";
 
-const TableHeader = styled.header`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-
-  background-color: var(--color-grey-50);
-  border-bottom: 1px solid var(--color-grey-100);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  padding: 1.6rem 2.4rem;
-`;
-
 function CabinTable() {
   const { isLoading, cabins, error } = useCabins();
+  // console.log("CabinTable", cabins);
+
   const [URLsearchParams] = useSearchParams();
 
-  let filtererCabins;
+  //*1)Filter cabins based on the URL search params
+
+  let filteredCabins;
   const filterValue = URLsearchParams.get("discount") || "all";
 
-  if (filterValue === "all") filtererCabins = cabins;
+  if (filterValue === "all") filteredCabins = cabins;
 
   if (filterValue === "no-discount")
-    filtererCabins = cabins.filter((cabin) => cabin.discount === 0);
+    filteredCabins = cabins?.filter((cabin) => cabin.discount === 0);
+
   if (filterValue === "with-discount")
-    filtererCabins = cabins.filter((cabin) => cabin.discount > 0);
+    filteredCabins = cabins?.filter((cabin) => cabin.discount > 0);
 
   if (isLoading) return <Spinner />;
 
   if (error) throw new Error(error);
+
+  //*2) SORT cabins based on the URL search params
+
+  const sortBy = URLsearchParams.get("sortBy") || "startDate-asc";
+  const [field, direction] = sortBy.split("-");
+
+  const modifier = direction === "asc" ? 1 : -1;
+
+  const sortedCabins = filteredCabins?.sort(
+    (a, b) => (a[field] - b[field]) * modifier
+  );
+
+  /*const sortedCabins = [...filteredCabins].sort((a, b) => {
+    const valueA = a[field];
+    const valueB = b[field];
+
+    return direction === "asc" ? valueA - valueB : valueB - valueA;
+  });
+  */
 
   return (
     <Menus>
@@ -53,8 +61,8 @@ function CabinTable() {
 
         <Table.Body
           // data={cabins}
-          data={filtererCabins}
-          render={(cabin) => <CabinRow cabin={cabin} />}
+          data={sortedCabins}
+          render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
         {/* {cabins.map((cabin) => {
         return <CabinRow key={cabin.id} cabin={cabin} />;

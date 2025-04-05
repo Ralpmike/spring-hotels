@@ -53,6 +53,7 @@ function Filter({ filterField, options }) {
           key={option.value}
           onClick={() => handleClick(option.value)}
           active={currentFilterValue === option.value}
+          disabled={currentFilterValue === option.value}
           // active={searchParams.get(filterField) === value.value}
         >
           {option.label}
